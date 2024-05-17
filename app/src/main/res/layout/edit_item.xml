@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#77C5E8"
+            android:gravity="center"
+            android:id="@+id/header"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Items"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textSize="25sp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Item Name"
+            android:id="@+id/itemheading"/>
+        <EditText
+            android:id="@+id/itemnameEditText"
+            android:layout_below="@+id/itemheading"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Item Name"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/itemnameEditText"
+            android:text="Price"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/priceheadinng"/>
+        <EditText
+            android:id="@+id/priceEditText"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_below="@+id/priceheadinng"
+            android:layout_height="wrap_content"
+            android:hint="Price"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:backgroundTint="#77C5E8"
+            app:cardCornerRadius="5dp"
+            android:id="@+id/additem"
+            android:layout_below="@id/priceEditText">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Save"
+                android:padding="15sp"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</RelativeLayout>

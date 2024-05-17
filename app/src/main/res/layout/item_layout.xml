@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="horizontal">
+
+    <AutoCompleteTextView
+        android:id="@+id/itemNameAutoComplete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:completionThreshold="1" /> <!-- Adjust completionThreshold as needed -->
+
+
+    <EditText
+        android:id="@+id/itemPriceEditText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/itemQuantityEditText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="5dp"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:inputType="number"/>
+    <EditText
+        android:id="@+id/itemTotalEditText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="5dp"
+        android:layout_height="wrap_content"
+        android:hint="Total"
+        android:inputType="number"/>
+</LinearLayout>

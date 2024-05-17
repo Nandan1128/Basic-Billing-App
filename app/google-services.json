@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1088109358989",
+    "project_id": "bill-e905b",
+    "storage_bucket": "bill-e905b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088109358989:android:7b724769ec2352e65e57c4",
+        "android_client_info": {
+          "package_name": "com.example.bill"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz7CYKRIb6YGYpUtTggnrEovYvXe_C84Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

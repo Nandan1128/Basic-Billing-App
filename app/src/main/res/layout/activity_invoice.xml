@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#77C5E8"
+        android:gravity="center"
+        android:id="@+id/header"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Invoice"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="25sp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/header">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/dateheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:text="Date"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="97dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/dateheading"
+        android:textSize="20sp"
+        tools:text="02/02/2002" />
+
+    <TextView
+        android:id="@+id/billheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateheading"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:text="Bill No."
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/billnum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date"
+        android:layout_alignLeft="@id/dateheading"
+        android:layout_marginStart="81dp"
+        android:layout_marginLeft="145dp"
+        android:layout_toEndOf="@+id/billheading"
+        android:textSize="20sp"
+        tools:text="01" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/custheading"
+        android:layout_marginStart="15dp"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:text="Enter Customer Name"
+        android:layout_below="@id/billheading"/>
+    <AutoCompleteTextView
+        android:id="@+id/customerNameAutoComplete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/custheading"
+        android:hint="Customer Name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/addressheading"
+        android:textSize="20sp"
+        android:text="Address"
+        android:layout_below="@id/customerNameAutoComplete"/>
+    <EditText
+        android:id="@+id/customerAddressEditText"
+        android:layout_width="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_below="@id/addressheading"
+        android:layout_marginTop="16dp"
+        android:hint="Customer Address"/>
+
+    <Button
+        android:id="@+id/addItemButton"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/customerAddressEditText"
+        android:layout_marginTop="16dp"
+        android:text="Add Item"/>
+
+    <LinearLayout
+        android:id="@+id/itemDetailsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_below="@id/addItemButton"
+        android:layout_marginTop="16dp"/>
+
+    <Spinner
+        android:id="@+id/gstSpinner"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemDetailsLayout"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/totalAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gstSpinner"
+        android:layout_marginTop="16dp"
+        android:text="Total Amount: 0.00"/>
+
+    <TextView
+        android:id="@+id/gstTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/totalAmountTextView"
+        android:text="GST: 0.00"/>
+
+    <TextView
+        android:id="@+id/grandTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gstTextView"
+        android:text="Grand Total: 0.00"/>
+
+    <Button
+        android:id="@+id/createInvoiceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/grandTotalTextView"
+        android:layout_toEndOf="@id/calbtn"
+        android:layout_marginTop="24dp"
+        android:text="Create Invoice"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calbtn"
+        android:text="Calculate Invoice"
+        android:layout_below="@id/grandTotalTextView"
+        android:layout_marginTop="24dp"/>
+
+    </RelativeLayout>
+</ScrollView>
+</RelativeLayout>

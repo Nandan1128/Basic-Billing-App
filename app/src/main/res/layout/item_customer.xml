@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/white"
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            tools:text="Customer Name"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/addressTextView"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="35dp"
+            android:textColor="@color/black"
+            tools:text="Address"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="wrap_content"
+            tools:text="000000000"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="70dp"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Bill</string>
+    <string name="shop_no_5_sai_complex_near_char_rasta_vapi_396195">Shop No. 5, Sai Complex, near Char Rasta, Vapi -396195</string>
+    <string name="ram_store">Ram Store</string>
+    <string name="shop_no_5_sai_complex_near_char_rasta">Shop No. 5, Sai Complex, near Char Rasta</string>
+    <string name="vapi_396195">Vapi -396195</string>
+    <string name="bill">Bill</string>
+    <string name="item_details">Item Details</string>
+    <string name="customer_address">Customer Address :</string>
+    <string name="customer_name">Customer Name :</string>
+    <string name="name">Name</string>
+    <string name="qunatity">Qunatity</string>
+    <string name="rate">Rate</string>
+    <string name="total">Total</string>
+    <string name="please_visit_again">Please Visit Again</string>
+    <string name="grand_total">Grand Total:</string>
+    <string name="gst_amount">GST Amount:</string>
+    <string name="total_amount">Total Amount:</string>
+    <string name="create_invoice">Create Invoice</string>
+    <string name="add_items">Add Items</string>
+    <string name="view_customer">View Customer</string>
+    <string name="add_customer">Add Customer</string>
+</resources>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:andriod="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="@string/ram_store"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_no_5_sai_complex_near_char_rasta"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="@string/vapi_396195"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+    <!-- Bill Information Section -->
+    <TextView
+        android:id="@+id/billTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="@string/bill"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"/>
+
+    <TextView
+        android:id="@+id/billDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:text="Date: [Bill Date]"
+        android:layout_below="@id/billTitleTextView"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/billNoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:text="Bill No.: [BIll no]"
+        android:layout_below="@id/billDateTextView"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/customernameheading"
+        android:text="Customer Name : [Customername]"
+        android:textSize="16sp"
+        android:layout_below="@id/billNoTextView"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Address :  [Customer Address]"
+        android:textSize="16sp"
+        android:id="@+id/customeraddressheading"
+        android:layout_below="@id/customernameheading"
+        android:layout_marginStart="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/customeraddress"
+        android:layout_below="@id/customernameheading"
+        android:layout_marginStart="6dp"
+        android:layout_toEndOf="@id/customeraddressheading"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="5dp"
+        app:dividerColor="@color/black"
+        android:layout_below="@id/customeraddressheading"/>
+
+
+    <!-- Item Details Section (You can customize this based on your needs) -->
+    <TextView
+        android:id="@+id/itemDetailsTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="@string/item_details"
+        android:layout_below="@id/customeraddressheading"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/itemDetailsTitleTextView"
+        android:orientation="horizontal"
+        android:id="@+id/detailheading">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/qunatity"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rate"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/rvitemdetail"
+        android:layout_below="@id/detailheading"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/rvitemdetail"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:dividerColor="@color/black" />
+
+    <!-- Total Amount Section -->
+    <TextView
+        android:id="@+id/totalAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:text="@string/total_amount"
+        android:layout_below="@id/rvitemdetail"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <!-- GST Amount Section -->
+    <TextView
+        android:id="@+id/gstAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:text="@string/gst_amount"
+        android:layout_below="@id/totalAmountTextView"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"/>
+
+    <!-- Grand Total Section -->
+    <TextView
+        android:id="@+id/grandTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="@string/grand_total"
+        android:layout_below="@id/gstAmountTextView"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <!-- Other views as per your layout -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/please_visit_again"
+        android:id="@+id/footer"
+        android:textSize="20sp"
+        android:layout_below="@id/grandTotalTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp"
+        android:textColor="@color/black"/>
+
+
+</RelativeLayout>
