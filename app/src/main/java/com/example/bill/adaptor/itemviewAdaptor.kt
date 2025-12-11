@@ -1,10 +1,12 @@
-package com.example.bill
+package com.example.bill.adaptor
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bill.R
+import com.example.bill.model.Items
 
 class itemviewAdaptor(private val itemList: List<Items>) :
     RecyclerView.Adapter<itemviewAdaptor.itemviewViewHolder>(){
@@ -26,8 +28,8 @@ class itemviewAdaptor(private val itemList: List<Items>) :
     }
 
     class itemviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val itemnameTextView: TextView = itemView.findViewById(R.id.nameTextView)
-        val priceTextView: TextView = itemView.findViewById(R.id.addressTextView)
+        val itemnameTextView: TextView = itemView.findViewById(R.id.itemnameTextView)
+        val priceTextView: TextView = itemView.findViewById(R.id.priceTextView)
     }
 
 }

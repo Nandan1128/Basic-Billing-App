@@ -1,10 +1,11 @@
-package com.example.bill
+package com.example.bill.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.example.bill.CustomerList
+import com.example.bill.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,19 +28,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         viewbtn.setOnClickListener {
-            val intent = Intent(this,CustomerList::class.java)
+            val intent = Intent(this, CustomerList::class.java)
             startActivity(intent)
         }
         createInvoicebtn.setOnClickListener {
-            val intent = Intent(this,InvoiceActivity::class.java)
+            val intent = Intent(this, InvoiceActivity::class.java)
             startActivity(intent)
         }
         addItemBtn.setOnClickListener {
-            val intent = Intent(this,AddItemActivity::class.java)
+            val intent = Intent(this, AddItemActivity::class.java)
             startActivity(intent)
         }
         viewitem.setOnClickListener {
-            val intent = Intent(this,viewitemActivity::class.java)
+            val intent = Intent(this, viewitemActivity::class.java)
             startActivity(intent)
         }
 

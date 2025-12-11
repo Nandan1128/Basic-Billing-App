@@ -1,15 +1,14 @@
-package com.example.bill
+package com.example.bill.ui
 
-import android.app.Activity
 import android.content.ContentValues
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.example.bill.R
+import com.example.bill.model.Items
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AddItemActivity : AppCompatActivity() {

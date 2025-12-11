@@ -2,46 +2,86 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="10dp"
-        android:backgroundTint="@color/white"
-        android:elevation="10dp">
+        android:background="@drawable/card_border">
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtcustomername"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="@string/customer_name1"/>
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             tools:text="Customer Name"
             android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/txtcustomername"
             android:textColor="@color/black"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:textSize="18sp"
             android:layout_height="wrap_content"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtaddress"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/txtcustomername"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:text="Address:"/>
         <TextView
             android:id="@+id/addressTextView"
             android:layout_width="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
+            android:layout_below="@id/nameTextView"
             tools:text="Address"
+            android:layout_toEndOf="@id/txtaddress"
             android:layout_marginStart="10dp"
             android:textSize="18sp"
             android:layout_height="wrap_content"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtphonenumber"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:layout_below="@id/txtaddress"
+                android:textColor="@color/black"
+                android:text="Phone Number:"/>
         <TextView
             android:id="@+id/phoneTextView"
             android:layout_width="wrap_content"
             tools:text="000000000"
             android:textColor="@color/black"
+            android:layout_below="@id/txtaddress"
+            android:layout_toRightOf="@id/txtphonenumber"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:textSize="18sp"
             android:layout_height="wrap_content"/>
-
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

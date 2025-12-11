@@ -1,4 +1,4 @@
-package com.example.bill
+package com.example.bill.model
 
 data class Items(
     var name: String = "",

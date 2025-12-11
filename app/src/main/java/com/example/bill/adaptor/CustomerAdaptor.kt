@@ -1,10 +1,12 @@
-package com.example.bill
+package com.example.bill.adaptor
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bill.R
+import com.example.bill.model.Customer
 
 class CustomerAdapter(private val customerList: List<Customer>) :
     RecyclerView.Adapter<CustomerAdapter.CustomerViewHolder>() {

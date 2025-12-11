@@ -1,15 +1,14 @@
-package com.example.bill
+package com.example.bill.ui
 
-import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.example.bill.R.id.cardadd
+import com.example.bill.R
+import com.example.bill.model.Customer
 import com.google.firebase.firestore.FirebaseFirestore
 
 class add_customer_activity : AppCompatActivity() {
@@ -43,19 +42,27 @@ class add_customer_activity : AppCompatActivity() {
         val address = addressEditText.text.toString()
         val phone = phoneEditText.text.toString()
 
-        if (name.isNotEmpty() && address.isNotEmpty() && phone.isNotEmpty()) {
-            val customer = Customer(name, address, phone)
+        if (name.isNotEmpty() && address.isNotEmpty() && phone.isNotEmpty() && name.length <= 20 && address.length <= 20 && phone.length <= 10) {
 
-            db.collection("Customers")
-                .add(customer)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Customer added successfully", Toast.LENGTH_SHORT).show()
-                    finish() // Close the activity after adding the customer
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(this, "Error adding customer", Toast.LENGTH_SHORT).show()
-                    Log.e(TAG, "Error adding customer", e)
-                }
+            val regex = Regex("^[A-Za-z\\s]+$")
+
+            if(regex.matches(name) && regex.matches(address)){
+                val customer = Customer(name, address, phone)
+
+                db.collection("Customers")
+                    .add(customer)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Customer added successfully", Toast.LENGTH_SHORT).show()
+                        finish() // Close the activity after adding the customer
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "Error adding customer", Toast.LENGTH_SHORT).show()
+                        Log.e(ContentValues.TAG, "Error adding customer", e)
+                    }
+            }
+            else{
+                Toast.makeText(this, "Please enter valid name or address", Toast.LENGTH_SHORT).show()
+            }
         } else {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
         }

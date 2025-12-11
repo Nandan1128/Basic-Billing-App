@@ -1,21 +1,24 @@
-package com.example.bill
+package com.example.bill.ui
 
-import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Paint
-import android.graphics.pdf.PdfDocument
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import com.example.bill.InvoiceDisplayActivity
+import com.example.bill.R
 import com.google.firebase.firestore.FirebaseFirestore
-import java.io.File
-import java.io.FileOutputStream
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -36,7 +39,7 @@ class InvoiceActivity : AppCompatActivity() {
     private var totalAmount: Double = 0.0
     private var gstAmount: Double = 0.0
     private var grandTotal: Double = 0.0
-    private val gstList = listOf("5%", "12%", "18%", "28%") // List of valid GST percentages
+    private val gstList = listOf("0%","5%", "12%", "18%", "28%") // List of valid GST percentages
     private val customerNames = mutableListOf<String>()
 
     private val customerAddresses = mutableListOf<String>()
@@ -68,7 +71,7 @@ class InvoiceActivity : AppCompatActivity() {
         date = findViewById(R.id.date)
         date.text = getCurrentDateTime()
 
-        sharedPreferences = getSharedPreferences("BillCounter", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("BillCounter", MODE_PRIVATE)
 
 
         val billNumberTextView = findViewById<TextView>(R.id.billnum)
@@ -84,9 +87,15 @@ class InvoiceActivity : AppCompatActivity() {
         createInvoiceButton.setOnClickListener {
             Log.d("button clicked","createinvoicebtn clicked")
 
+            if(itemList.isEmpty()){
+                Toast.makeText(this, "Please add items to create an invoice.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            calculateInvoice()
+
             val customerName = customerNameAutoComplete.text.toString()
             val customerAddress = customerAddressEditText.text.toString()
-            val intent = Intent(this,InvoiceDisplayActivity::class.java).apply {
+            val intent = Intent(this, InvoiceDisplayActivity::class.java).apply {
                 putExtra("billDate", getCurrentDateTime()) // Assuming you want to pass the current date as billDate
                 putExtra("billNo", generateBillNumber())
                 putExtra("customerName", customerName)
@@ -135,7 +144,8 @@ class InvoiceActivity : AppCompatActivity() {
                         customerAddresses.add(it)
                     }
                 }
-                val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, customerNames)
+                val adapter =
+                    ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, customerNames)
                 customerNameAutoComplete.setAdapter(adapter)
             }
             .addOnFailureListener { exception ->
@@ -147,7 +157,7 @@ class InvoiceActivity : AppCompatActivity() {
 
 
     private fun addItemLayout() {
-        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val itemLayout = inflater.inflate(R.layout.item_layout, null)
 
         val itemNameAutoComplete = itemLayout.findViewById<AutoCompleteTextView>(R.id.itemNameAutoComplete)
@@ -167,6 +177,25 @@ class InvoiceActivity : AppCompatActivity() {
         itemDetailsLayout.addView(itemLayout)
     }
 
+
+    private fun calculateRowTotal(
+        qtyEt: EditText,
+        priceEt: EditText,
+        totalEt: EditText,
+        item: Item
+    ) {
+        val qty = qtyEt.text.toString().toIntOrNull() ?: 0
+        val price = priceEt.text.toString().toDoubleOrNull() ?: 0.0
+
+        val total = qty * price
+        totalEt.setText(total.toString())
+
+        item.quantity = qty
+        item.price = price
+    }
+
+
+
     private fun fetchItemNamesAndPrices(
         itemNameAutoComplete: AutoCompleteTextView?,
         itemPriceEditText: EditText?,
@@ -177,7 +206,7 @@ class InvoiceActivity : AppCompatActivity() {
         itemPriceEditText ?: return
         itemQuantityEditText ?: return
 
-        itemList = mutableListOf() // Initialize itemList here
+//        itemList = mutableListOf() // Initialize itemList here
 
         firestore.collection("Items")
             .get()
@@ -195,7 +224,8 @@ class InvoiceActivity : AppCompatActivity() {
                 }
 
                 val itemNames = itemDetailsList.map { it.name }
-                val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, itemNames)
+                val adapter =
+                    ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, itemNames)
                 itemNameAutoComplete.setAdapter(adapter)
 
                 itemNameAutoComplete.setOnItemClickListener { _, _, position, _ ->
@@ -225,17 +255,33 @@ class InvoiceActivity : AppCompatActivity() {
             }
     }
     private fun createInvoice() {
-        val customerName = customerNameAutoComplete.text.toString()
-        val customerAddress = customerAddressEditText.text.toString()
-        val gstText = gstSpinner.selectedItem.toString() // Get selected GST from Spinner
+        itemList.clear() // reset list
 
-        if (customerName.isNotEmpty() && customerAddress.isNotEmpty() && itemList.isNotEmpty() && validateGST(gstText)) {
-            calculateInvoice()
+        // loop through all rows in itemDetailsLayout
+        for (i in 0 until itemDetailsLayout.childCount) {
+            val row = itemDetailsLayout.getChildAt(i)
 
-        } else {
-            Toast.makeText(this, "Please fill in all fields correctly and add items to create an invoice.", Toast.LENGTH_SHORT).show()
+            val nameEt = row.findViewById<AutoCompleteTextView>(R.id.itemNameAutoComplete)
+            val priceEt = row.findViewById<EditText>(R.id.itemPriceEditText)
+            val qtyEt = row.findViewById<EditText>(R.id.itemQuantityEditText)
+
+            val name = nameEt.text.toString()
+            val price = priceEt.text.toString().toDoubleOrNull() ?: 0.0
+            val qty = qtyEt.text.toString().toIntOrNull() ?: 0
+
+            if (name.isNotEmpty() && qty > 0) {
+                itemList.add(Item(name, price, qty))
+            }
         }
+
+        if (itemList.isEmpty()) {
+            Toast.makeText(this, "Please add at least one valid item.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        calculateInvoice()
     }
+
 
     private fun getCurrentDateTime() : String {
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -245,19 +291,23 @@ class InvoiceActivity : AppCompatActivity() {
 
     private fun calculateInvoice() {
         totalAmount = 0.0
+//        itemList.forEach { item ->
+//            val price = item.price
+//            val quantity = item.quantity
+//            totalAmount += price.toInt() * quantity
+//        }
         itemList.forEach { item ->
-            val price = item.price
-            val quantity = item.quantity
-            totalAmount += price.toInt() * quantity
+            totalAmount += (item.price * item.quantity)
         }
+
 
         val gstPercentage = gstSpinner.selectedItem.toString().replace("%", "").toDouble() / 100
         gstAmount = totalAmount * gstPercentage
         grandTotal = totalAmount + gstAmount
 
-        totalAmountTextView.text = String.format(Locale.getDefault(), "Total Amount: %.2f", totalAmount)
-        gstTextView.text = String.format(Locale.getDefault(), "GST (%s): %.2f", gstSpinner.selectedItem, gstAmount)
-        grandTotalTextView.text = String.format(Locale.getDefault(), "Grand Total: %.2f", grandTotal)
+        totalAmountTextView.text = String.Companion.format(Locale.getDefault(), "Total Amount: %.2f", totalAmount)
+        gstTextView.text = String.Companion.format(Locale.getDefault(), "GST (%s): %.2f", gstSpinner.selectedItem, gstAmount)
+        grandTotalTextView.text = String.Companion.format(Locale.getDefault(), "Grand Total: %.2f", grandTotal)
     }
     private fun generateBillNumber(): String {
 
@@ -271,6 +321,6 @@ class InvoiceActivity : AppCompatActivity() {
         return "$currentDate - $billCounter"
     }
 
-    data class Item(val name: String, val price: Double, var quantity: Int) : Serializable
+    data class Item(var name: String, var price: Double, var quantity: Int) : Serializable
     data class ItemDetails(val name: String, val price: Double)
 }

@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bill.adaptor.CustomerAdapter
+import com.example.bill.model.Customer
 import com.google.firebase.firestore.FirebaseFirestore
 
 class CustomerList : AppCompatActivity() {

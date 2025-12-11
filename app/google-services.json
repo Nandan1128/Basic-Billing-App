@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "1088109358989",
     "project_id": "bill-e905b",
-    "storage_bucket": "bill-e905b.appspot.com"
+    "storage_bucket": "bill-e905b.firebasestorage.app"
   },
   "client": [
     {
