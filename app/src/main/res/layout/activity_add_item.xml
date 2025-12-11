@@ -32,6 +32,7 @@
             android:layout_below="@id/header"
             android:padding="10dp"
             android:layout_marginTop="20dp"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="Item Name"
@@ -40,6 +41,9 @@
             android:id="@+id/itemnameEditText"
             android:layout_below="@+id/itemheading"
             android:padding="10dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Item Name"/>
@@ -51,12 +55,16 @@
             android:text="Price"
             android:padding="10dp"
             android:textSize="20sp"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:id="@+id/priceheadinng"/>
         <EditText
             android:id="@+id/priceEditText"
             android:layout_width="match_parent"
             android:padding="10dp"
+            android:background="@drawable/edittext_bg"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
             android:layout_below="@+id/priceheadinng"
             android:layout_height="wrap_content"
             android:hint="Price"/>

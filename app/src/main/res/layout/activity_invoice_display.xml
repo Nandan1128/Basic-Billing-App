@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rootLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:andriod="http://schemas.android.com/tools">
 
@@ -237,5 +238,13 @@
         android:layout_marginTop="20sp"
         android:textColor="@color/black"/>
 
+    <Button
+        android:id="@+id/btnPrint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Print Bill"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/footer"
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>

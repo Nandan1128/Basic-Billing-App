@@ -20,4 +20,5 @@
     <string name="add_items">Add Items</string>
     <string name="view_customer">View Customer</string>
     <string name="add_customer">Add Customer</string>
+    <string name="customer_name1">Customer Name:</string>
 </resources>

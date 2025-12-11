@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Bill"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,12 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".add_customer_activity"/>
+        <activity android:name=".ui.add_customer_activity"/>
         <activity android:name=".CustomerList"/>
-        <activity android:name="InvoiceActivity"/>
-        <activity android:name=".AddItemActivity"/>
+        <activity android:name=".ui.InvoiceActivity"/>
+        <activity android:name=".ui.AddItemActivity"/>
         <activity android:name="InvoiceDisplayActivity"/>
-        <activity android:name="viewitemActivity"/>
+        <activity android:name=".ui.viewitemActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.bill.com.example.bill
+package com.example.bill.adaptor
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bill.InvoiceActivity.Item
+import com.example.bill.ui.InvoiceActivity
 import com.example.bill.R
 
-class ItemAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter(private val itemList: List<InvoiceActivity.Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.bill_item_detail, parent, false)
@@ -31,7 +31,7 @@ class ItemAdapter(private val itemList: List<Item>) : RecyclerView.Adapter<ItemA
         private val itemQuantityTextView: TextView = itemView.findViewById(R.id.listitemprice)
         private val itemTotalTextView: TextView = itemView.findViewById(R.id.listitemtotal)
 
-        fun bind(item: Item) {
+        fun bind(item: InvoiceActivity.Item) {
             Log.d("itemname",item.name)
             itemNameTextView.text = "sugar"
             itemPriceTextView.text = "${item.price}"
